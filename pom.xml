@@ -111,6 +111,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*ApplicationProperties.*</exclude>
+                        <exclude>**/*WarehouseServiceApplication.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
