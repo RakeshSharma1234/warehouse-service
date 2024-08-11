@@ -2,11 +2,13 @@
 
 ## Overview
 
-The Warehouse Service collects environmental data from sensors via UDP and publishes it to a Kafka topic. This service is a part of a reactive system designed to monitor warehouse conditions.
+The Warehouse Service collects environmental data from sensors via UDP and publishes it to a Kafka topic. This service
+is a part of a reactive system designed to monitor warehouse conditions.
 
 ## Prerequisites
 
-1. **Java 17 or higher**: Ensure that you have Java Development Kit (JDK) 17 or a later version installed on your machine.
+1. **Java 17 or higher**: Ensure that you have Java Development Kit (JDK) 17 or a later version installed on your
+   machine.
 
 2. **Apache Kafka**: You need to have Kafka running locally and create a `sensor-data-topic` topic .
 
@@ -66,12 +68,12 @@ The Warehouse Service collects environmental data from sensors via UDP and publi
             volumes:
               - /var/run/docker.sock:/var/run/docker.sock
       ```
-     Create kafka topic `sensor-data-topic` by below command:
+   Create kafka topic `sensor-data-topic` by below command:
 
      ```sh
       docker exec -it <your-container-id> /opt/kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic sensor-data-topic
       ```
- 
+
 ## Running the Service Locally
 
 1. **Start the Service**:
@@ -92,12 +94,25 @@ The Warehouse Service collects environmental data from sensors via UDP and publi
     ```sh
     echo "sensor_id=h1;value=51" | nc -u -w1 localhost 3355
     ```
-  
+
 3. **Verify**:
 
    Check the application logs for messages about receiving and publishing data.
 
+## Test Coverage
+
+To generate the test coverage report, run the following command:
+
+```bash
+mvn clean test
+```
+
+After running the tests, you can view the JaCoCo report by opening the following file in your browser:
+
+- **Maven:** `target/site/jacoco/index.html`
+
 ## Common Issues
 
-- **Kafka Connection Issues**: Ensure Kafka is running and configured correctly. Check the logs for any errors related to Kafka connectivity.
+- **Kafka Connection Issues**: Ensure Kafka is running and configured correctly. Check the logs for any errors related
+  to Kafka connectivity.
 - **UDP Listener**: Ensure the UDP port (3344 and 3355) are not blocked by any firewall or other services.
