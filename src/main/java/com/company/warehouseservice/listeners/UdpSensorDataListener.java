@@ -35,6 +35,7 @@ public class UdpSensorDataListener implements SensorDataListener {
    *
    * @param sensorDataPublisher   the service responsible for publishing sensor data
    * @param applicationProperties the application properties containing configuration values such as port numbers
+   * @param datagramSocketFactory the factory class object for creating instances of DatagramSocket.
    */
   public UdpSensorDataListener(SensorDataPublisher sensorDataPublisher, ApplicationProperties applicationProperties,
                                DatagramSocketFactory datagramSocketFactory) {
